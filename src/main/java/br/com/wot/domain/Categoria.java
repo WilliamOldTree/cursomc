@@ -16,9 +16,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Categoria implements Serializable {	
+public class Categoria{	
 	
-	private static final long serialVersionUID = 1L;
+	
 	
 	//atributos	
 	@Id
