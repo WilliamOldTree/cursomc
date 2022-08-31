@@ -1,6 +1,8 @@
 package br.com.wot.domain;
 
-import java.io.Serializable;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -9,36 +11,60 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-import lombok.Getter;
-import lombok.Setter;
-
-
-@Getter
-@Setter
 @Entity
-public class Categoria{	
+public class Categoria {	
 	
 	
 	
-	//atributos	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nome;
-
 	
-	//construtores
+	private List<Produto> produtos = new ArrayList<>();
+	
+	
 	public Categoria() {
 		
 	}
+
+	
 	public Categoria(Long id, String nome) {
 		super();
 		this.id = id;
-		this.setNome(nome);
+		this.nome = nome;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
-					//METODOS
+	
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -55,12 +81,5 @@ public class Categoria{
 		Categoria other = (Categoria) obj;
 		return Objects.equals(id, other.id);
 	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
 	
 }//end class
