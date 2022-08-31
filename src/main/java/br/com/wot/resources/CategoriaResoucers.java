@@ -24,9 +24,9 @@ public class CategoriaResoucers {
 							//METODOS	
 	//busca por Id
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Categoria> findById(@PathVariable Long id){
+	public ResponseEntity<?> findById(@PathVariable Long id){
 		Categoria obj = service.findById(id);
-		return ResponseEntity.ok(obj);	
+		return ResponseEntity.ok().body(obj);	
 	}
 	
 	//listar categorias
