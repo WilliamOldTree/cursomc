@@ -3,6 +3,7 @@ package br.com.wot.domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Estado {
@@ -46,5 +47,18 @@ public class Estado {
 
     public void setCidades(List<Cidade> cidades) {
         this.cidades = cidades;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Estado)) return false;
+        Estado estado = (Estado) o;
+        return id.equals(estado.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
