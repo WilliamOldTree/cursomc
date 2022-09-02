@@ -1,9 +1,6 @@
 package br.com.wot;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> a192ef30014993b332eff685429e7cf416ba064e
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,43 +9,24 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.wot.domain.Categoria;
-<<<<<<< HEAD
-import br.com.wot.repositories.CategoriaRepository;
-=======
 import br.com.wot.domain.Produto;
 import br.com.wot.repositories.CategoriaRepository;
 import br.com.wot.repositories.ProdutoRepository;
->>>>>>> a192ef30014993b332eff685429e7cf416ba064e
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
 	
 	@Autowired
-<<<<<<< HEAD
-	CategoriaRepository repository;
-=======
 	private CategoriaRepository catRepository;
 	
 	@Autowired
 	private ProdutoRepository prodRepository;
->>>>>>> a192ef30014993b332eff685429e7cf416ba064e
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
 	}
-<<<<<<< HEAD
 
-	@Override
-	public void run(String... args) throws Exception {
-		
-		Categoria cat1 = new Categoria (null, "informatica");
-		Categoria cat2 = new Categoria (null, "escritorio");
-		
-		repository.saveAll(Arrays.asList(cat1, cat2));
-			
-	}
-
-=======
 	
 	
 	@Override
@@ -73,5 +51,5 @@ public class CursomcApplication implements CommandLineRunner {
 	}
 	
 	
->>>>>>> a192ef30014993b332eff685429e7cf416ba064e
+
 }
