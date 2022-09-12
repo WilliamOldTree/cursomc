@@ -1,5 +1,8 @@
 package br.com.wot.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,7 @@ public class Estado {
 
     private String nome;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "estado")
     private List <Cidade> cidades = new ArrayList<>();
 

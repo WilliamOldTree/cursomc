@@ -1,6 +1,8 @@
 package br.com.wot.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +24,7 @@ public class Categoria {
 	
 	private String nome;
 	
+	@JsonManagedReference
 	@ManyToMany(mappedBy = "categorias")
 	private List <Produto> produtos = new ArrayList<>();
 	

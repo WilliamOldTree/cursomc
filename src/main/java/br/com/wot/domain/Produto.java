@@ -1,5 +1,7 @@
 package br.com.wot.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +25,7 @@ public class Produto {
 	private String nome;
 	private Double preco;
 	
-	
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(
 			name = "PRODUTO_CATEGORIA",

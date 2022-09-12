@@ -3,19 +3,13 @@ package br.com.wot;
 
 import java.util.Arrays;
 
-import br.com.wot.domain.Cidade;
-import br.com.wot.domain.Estado;
-import br.com.wot.repositories.CidadeRepository;
-import br.com.wot.repositories.EstadoRepository;
+import br.com.wot.domain.*;
+import br.com.wot.enums.TipoCliente;
+import br.com.wot.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import br.com.wot.domain.Categoria;
-import br.com.wot.domain.Produto;
-import br.com.wot.repositories.CategoriaRepository;
-import br.com.wot.repositories.ProdutoRepository;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
@@ -31,6 +25,12 @@ public class CursomcApplication implements CommandLineRunner {
 
 	@Autowired
 	private EstadoRepository estRepository;
+
+	@Autowired
+	private ClienteRepository cliRepository;
+
+	@Autowired
+	private EnderecoRepository endRepository;
 
 
 	public static void main(String[] args) {
@@ -62,16 +62,20 @@ public class CursomcApplication implements CommandLineRunner {
 		Cidade c2 = new Cidade(null, "São Paulo", es2);
 		Cidade c3 = new Cidade(null, "Campinas", es2);
 
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "36378912377", TipoCliente.PESSOAFISICA);
+		cli1.getTelefones().addAll(Arrays.asList("20425766", "94024961"));
+
+
+		Endereco e1 = new Endereco(null, "Rua Flore", "300", "apt 203", "Jardim ", "38220834",c1, cli1 );
+		Endereco e2 = new Endereco(null, "Rua Araramboia", "24", "casa 02", "Jardim Ipanema", "03694000", c2, cli1);
+
 		catRepository.saveAll(Arrays.asList(cat1, cat2));
 		prodRepository.saveAll(Arrays.asList(p1,p2,p3));
 		estRepository.saveAll(Arrays.asList(es1, es2));
 		cidRepository.saveAll(Arrays.asList(c1, c2, c3));
-
-
-
+		cliRepository.saveAll(Arrays.asList(cli1));
+		endRepository.saveAll(Arrays.asList(e1,e2));
 
 	}
-
-	
 
 }
