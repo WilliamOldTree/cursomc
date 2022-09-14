@@ -1,5 +1,6 @@
 package br.com.wot.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class Produto {
 	private String nome;
 	private Double preco;
 	
+
 	@JsonBackReference
 	@ManyToMany
 	@JoinTable(
@@ -36,19 +38,18 @@ public class Produto {
 			)
 	List <Categoria> categorias = new ArrayList<>();
 	
+
 	
 	public Produto() {
 		
 	}
-	
+
 	public Produto(Long id, String nome, Double preco) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
 	}
-	
-	
 	public Long getId() {
 		return id;
 	}
@@ -73,7 +74,7 @@ public class Produto {
 		this.preco = preco;
 	}
 	
-	
+
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
@@ -99,4 +100,5 @@ public class Produto {
 		return Objects.equals(id, other.id);
 	}
 	
+
 }
