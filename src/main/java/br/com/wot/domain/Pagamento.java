@@ -47,3 +47,4 @@ public class Pagamento {
         return Objects.hash(getId());
     }
 }
+                                                            
