@@ -1,5 +1,8 @@
 package br.com.wot.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+
 @Entity
 public class Produto {
 
@@ -22,13 +26,19 @@ public class Produto {
 	private String nome;
 	private Double preco;
 	
-	
+
+	@JsonBackReference
 	@ManyToMany
-	@JoinTable(name="PRODUTO_CATEGORIA",
-			joinColumns=@JoinColumn(name= "produto_id"),
-			inverseJoinColumns = @JoinColumn(name = "categoria_id")
+	@JoinTable(
+			name = "PRODUTO_CATEGORIA",
+			joinColumns =
+				@JoinColumn(name= "produto_id"),
+			inverseJoinColumns = 
+				@JoinColumn(name= "categoria_id")
 			)
-	private List<Categoria> categorias = new ArrayList<>();
+	List <Categoria> categorias = new ArrayList<>();
+	
+
 	
 	public Produto() {
 		
@@ -40,7 +50,6 @@ public class Produto {
 		this.nome = nome;
 		this.preco = preco;
 	}
-
 	public Long getId() {
 		return id;
 	}
@@ -91,5 +100,5 @@ public class Produto {
 		return Objects.equals(id, other.id);
 	}
 	
-	
+
 }
