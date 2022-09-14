@@ -16,6 +16,9 @@ public class Cliente {
     private String cpfOuCnpj;
     private Integer tipoCliente;
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
+
     //Associations
     @OneToMany(mappedBy = "cliente")
     @JsonManagedReference
@@ -78,6 +81,14 @@ public class Cliente {
         this.tipoCliente = tipoCliente.getCod();
     }
 
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
     public List<Endereco> getEnderecos() {
         return enderecos;
     }
@@ -93,6 +104,8 @@ public class Cliente {
     public void setTelefones(Set<String> telefones) {
         this.telefones = telefones;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
